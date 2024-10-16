@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: information
+  profiles:
+    active: local
+    
+server:
+  servlet:
+    context-path: /api
+  port: 8050
