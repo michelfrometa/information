@@ -1,0 +1,38 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'src/**'
+      - '.github/workflows/information-workflow.yaml'
+  push:
+    branches: [ main ]
+    paths:
+      - 'src/**'
+      - '.github/workflows/information-workflow.yaml'
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Check out the repository
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # Step 2: Set up JDK 21 (adjust version if necessary)
+      - name: Set up JDK 21
+        with:
+          distribution: 'adopt' # You can choose 'adopt', 'zulu', etc.
+          java-version: '21'
+          cache: gradle
+
+      # Step 3: Grant execute permission for Gradle wrapper
+      - name: Grant execute permission for Gradle wrapper
+        run: chmod +x gradlew
+
+      # Step 4: Build and test with Gradle
+      - name: Build and Test
+        run: ./gradlew clean test
