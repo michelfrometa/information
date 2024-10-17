@@ -5,12 +5,12 @@ on:
     branches: [ main ]
     paths:
       - 'src/**'
-      - '.github/workflows/information-workflow.yaml'
+      - '.github/workflows/CI.yml'
   push:
     branches: [ main ]
     paths:
       - 'src/**'
-      - '.github/workflows/information-workflow.yaml'
+      - '.github/workflows/CI.yml'
 
 jobs:
   build:
